@@ -3,8 +3,7 @@ namespace Metacube.Net.ZooManagement;
 public class Peacock : Bird
 {
     private static readonly string SOUND = "Squawk, squawk!";
-    private static int lastID = 0;
-    private int id;
+    private string id;
     private string name;
     private int age;
     private float weight;
@@ -18,13 +17,13 @@ public class Peacock : Bird
         {
             throw new ArithmeticException(Animal.INVALID_AGE_MESSAGE);
         }
-        this.id = ++lastID;
+        this.id = Guid.NewGuid().ToString();
         this.name = name;
         this.age = age;
         this.featherColor = featherColor;
     }
 
-    public int ID
+    public string ID
     {
         get
         {
