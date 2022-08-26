@@ -41,6 +41,11 @@ public class Peacock : Bird
 
         set
         {
+
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException(Animal.INVALID_NAME_MESSAGE);
+            }
             name = value;
         }
     }
@@ -54,6 +59,10 @@ public class Peacock : Bird
 
         set
         {
+            if (value <= 0)
+            {
+                throw new ArithmeticException(Animal.INVALID_AGE_MESSAGE);
+            }
             age = value;
         }
     }
@@ -67,6 +76,10 @@ public class Peacock : Bird
 
         set
         {
+            if (value <= 0f)
+            {
+                throw new ArithmeticException(Animal.INVALID_WEIGHT_MESSAGE);
+            }
             weight = value;
         }
     }
@@ -80,6 +93,10 @@ public class Peacock : Bird
 
         set
         {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException(Animal.INVALID_HEALTH_MESSAGE);
+            }
             health = value;
         }
     }
@@ -93,11 +110,16 @@ public class Peacock : Bird
 
         set
         {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException(Bird.INVALID_FEATHER_MESSAGE);
+            }
             featherColor = value;
         }
     }
 
-    public string sound() {
+    public string sound()
+    {
         return Peacock.SOUND;
     }
 

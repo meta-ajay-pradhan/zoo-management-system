@@ -41,6 +41,10 @@ public class Snake : Reptile
 
         set
         {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException(Animal.INVALID_NAME_MESSAGE);
+            }
             name = value;
         }
     }
@@ -54,6 +58,10 @@ public class Snake : Reptile
 
         set
         {
+            if (value <= 0)
+            {
+                throw new ArithmeticException(Animal.INVALID_AGE_MESSAGE);
+            }
             age = value;
         }
     }
@@ -67,6 +75,10 @@ public class Snake : Reptile
 
         set
         {
+            if (value <= 0f)
+            {
+                throw new ArithmeticException(Animal.INVALID_WEIGHT_MESSAGE);
+            }
             weight = value;
         }
     }
@@ -80,6 +92,10 @@ public class Snake : Reptile
 
         set
         {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException(Animal.INVALID_HEALTH_MESSAGE);
+            }
             health = value;
         }
     }
@@ -93,11 +109,16 @@ public class Snake : Reptile
 
         set
         {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException(Reptile.INVALID_SCALE_MESSAGE);
+            }
             scaleColor = value;
         }
     }
 
-    public string sound() {
+    public string sound()
+    {
         return Snake.SOUND;
     }
 
