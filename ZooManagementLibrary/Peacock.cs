@@ -20,6 +20,7 @@ public class Peacock : Bird
         this.id = Guid.NewGuid().ToString();
         this.name = name;
         this.age = age;
+        this.health = health;
         this.featherColor = featherColor;
     }
 

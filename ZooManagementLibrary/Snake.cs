@@ -20,6 +20,7 @@ public class Snake : Reptile
         this.id = Guid.NewGuid().ToString();
         this.name = name;
         this.age = age;
+        this.health = health;
         this.scaleColor = scaleColor;
     }
 

@@ -3,6 +3,7 @@ namespace Metacube.Net.ZooManagement;
 public class Lion : Mammal
 {
     private static readonly string SOUND = "Roar!";
+    private static readonly string NULL_REFRENCE_MESSAGE = "null value not allowed!";
     private string id;
     private string name;
     private int age;
@@ -17,9 +18,13 @@ public class Lion : Mammal
         {
             throw new ArithmeticException(Animal.INVALID_AGE_MESSAGE);
         }
+        if(health == null || furColor == null) {
+            throw new ArgumentNullException(NULL_REFRENCE_MESSAGE);
+        }
         this.id = Guid.NewGuid().ToString();
         this.name = name;
         this.age = age;
+        this.health = health;
         this.furColor = furColor;
     }
 

@@ -9,19 +9,22 @@ public class Cage<T> where T : Animal
     private string id;
     private List<T> animals;
     private uint limit;
+    private readonly Type animalType;
 
-    public Cage(uint limit)
+    public Cage(uint limit, Type animalType)
     {
         this.limit = limit;
         this.animals = new List<T>();
-        this.id = Guid.NewGuid().ToString();
+        string temp = Guid.NewGuid().ToString();
+        this.id = temp.Split('-')[4];
+        this.animalType = animalType;
     }
 
     public string ID
     {
         get
         {
-            return ID;
+            return id;
         }
     }
 
@@ -49,9 +52,12 @@ public class Cage<T> where T : Animal
         }
     }
 
+    public Type getAnimalType()
+    {
+        return this.animalType;
+    }
 
-
-    public void addAnimal(T animal)
+    public string? addAnimal(T animal)
     {
         if (animal == null)
         {
@@ -59,15 +65,19 @@ public class Cage<T> where T : Animal
         }
         if (this.isFull())
         {
-            throw new ArithmeticException(LIMIT_EXCEED_MESSAGE);
+            return null;
         }
         animals.Add(animal);
+        Console.WriteLine("\n cage71:" + animals[0].Name);
         limit++;
+
+        return this.id;
     }
 
     public bool isFull()
     {
-        return limit == animals.Count;
+        Console.WriteLine("\ncage79: " + limit + " " + animals.Count);
+        return ! (limit < animals.Count);
     }
 
     public bool removeAnimal(string animalId)
